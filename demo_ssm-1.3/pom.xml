@@ -8,6 +8,7 @@
 	<name>demo_ssm-1.3</name>
 
 
+	
 	<properties>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<mysql.version>5.1.32</mysql.version>
@@ -23,9 +24,57 @@
 		<jstl.version>1.2</jstl.version>
 		<fastjson.version>1.1.41</fastjson.version>
 		<mbgenerator.version>1.3.4</mbgenerator.version>
+		<mjetty.version>6.1.26</mjetty.version>
+		<httpclient.version>4.5</httpclient.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty</artifactId>
+			<version>${mjetty.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-naming</artifactId>
+			<version>${mjetty.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-plus</artifactId>
+			<scope>test</scope>
+			<version>${mjetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jsp-2.1-jetty</artifactId>
+			<version>${mjetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.3</version>
+		</dependency>
 		<!-- Spring依赖 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
