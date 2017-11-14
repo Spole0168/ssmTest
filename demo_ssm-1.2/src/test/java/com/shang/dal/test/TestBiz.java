@@ -14,7 +14,7 @@ import com.shang.dal.model.Student;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //配置了@ContextConfiguration注解并使用该注解的locations属性指明spring和配置文件之后，
-@ContextConfiguration(locations = {"classpath:spring_mvc.xml", "classpath:spring_mybatis.xml" })
+@ContextConfiguration(locations = {"classpath:spring_mvc.xml", "classpath:test/spring_mybatis.xml" })
 public class TestBiz {
 	@Autowired
 	IStudentBiz studentBiz;
@@ -23,7 +23,7 @@ public class TestBiz {
 	public void test_add(){
 		Student stu = new Student();
 		stu.setAge(20);
-		stu.setName("BBBBBBB");
+		stu.setName("AAAAAA");
 		studentBiz.insertSelective(stu);
 	}
 	@Test
