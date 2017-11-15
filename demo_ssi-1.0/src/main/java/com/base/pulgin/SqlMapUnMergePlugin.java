@@ -18,8 +18,9 @@ public class SqlMapUnMergePlugin extends PluginAdapter {
             directory = shellCallback.getDirectory(context.getSqlMapGeneratorConfiguration().getTargetProject(), context
                     .getSqlMapGeneratorConfiguration().getTargetPackage());
             File[] listFiles = directory.listFiles();
-            String mappingFileName = introspectedTable.getMyBatis3JavaMapperType();//shang.dal.dao.StudentMapper
-            mappingFileName = mappingFileName.substring(mappingFileName.lastIndexOf(".")+1);
+            String mappingFileName = introspectedTable.getIbatis2SqlMapFileName();//shang.dal.dao.StudentMapper
+            introspectedTable.getIbatis2SqlMapFileName();
+//            mappingFileName = mappingFileName.substring(mappingFileName.lastIndexOf(".")+1);
             if(null!=listFiles && listFiles.length>0){
             	for(File file : listFiles){
 //            		System.out.println(mappingFileName+"||"+file.getName());

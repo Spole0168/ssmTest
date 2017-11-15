@@ -10,6 +10,8 @@
         
         <!-- DAO的生成,带有分页标识 -->
         <plugin type="com.base.pulgin.PaginationAnnotaionPlugin">
+        	<property name="extends" value="com.base.BaseDao"/>
+        	<property name="pageClass" value="com.base.Page"/>  
         	<property name="pageClass" value="com.base.Page"/>  
         </plugin>
 
@@ -38,7 +40,7 @@
        
         
         <table tableName="student" domainObjectName="Student">
-        	<generatedKey column="id" sqlStatement="SELECT genTabId('student')" identity="false"/>
+        	<generatedKey column="id" sqlStatement="select UUID()" identity="false"/>
         </table>
         
         

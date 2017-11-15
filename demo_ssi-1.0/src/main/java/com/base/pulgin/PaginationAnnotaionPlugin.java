@@ -36,10 +36,18 @@ public class PaginationAnnotaionPlugin extends PluginAdapter {
 	 * @param introspectedTable
 	 */
 	private void ibatisPageGenerate(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable){
+		String superClazz = getProperties().getProperty("extends");
+		if(superClazz != null && superClazz.trim().length()>0){
+			FullyQualifiedJavaType superType = new FullyQualifiedJavaType(superClazz);
+			topLevelClass.setSuperClass(superType);
+			topLevelClass.addImportedType(superType);
+		}
+		
 		topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
 		String shortName = interfaze.getType().getShortName();
 		shortName = shortName.substring(0,1).toLowerCase()+shortName.substring(1);
-		topLevelClass.addAnnotation("@Repository(\""+interfaze.getType().getShortName()+"\")");
+		System.out.println(shortName);
+		topLevelClass.addAnnotation("@Repository(\""+shortName+"\")");
 	}
 
 	public boolean validate(List<String> warnings) {

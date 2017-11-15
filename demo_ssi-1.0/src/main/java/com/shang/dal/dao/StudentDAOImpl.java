@@ -1,13 +1,14 @@
 package com.shang.dal.dao;
 
+import com.base.BaseDao;
 import com.shang.dal.model.Student;
 import com.shang.dal.model.StudentExample;
 import java.util.List;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
-@Repository("StudentDAO")
-public class StudentDAOImpl extends SqlMapClientDaoSupport implements StudentDAO {
+@Repository("studentDAO")
+public class StudentDAOImpl extends BaseDao implements StudentDAO {
 
     public StudentDAOImpl() {
         super();
