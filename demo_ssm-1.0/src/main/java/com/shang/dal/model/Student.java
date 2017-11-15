@@ -1,6 +1,7 @@
 package com.shang.dal.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -28,6 +29,36 @@ public class Student implements Serializable {
      * 年龄
      */
     private Integer age;
+
+    /**
+     * CHAR(1) 默认值[0]<br>
+     * 是否有效 0-有效，1-删除 
+     */
+    private String isValid;
+
+    /**
+     * VARCHAR(20)<br>
+     * 创建者
+     */
+    private String creator;
+
+    /**
+     * TIMESTAMP(19) 默认值[CURRENT_TIMESTAMP] 必填<br>
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * VARCHAR(20)<br>
+     * 最后修改者
+     */
+    private String updator;
+
+    /**
+     * TIMESTAMP(19)<br>
+     * 最后修改时间
+     */
+    private Date updateTime;
 
     /**
      * VARCHAR(40) 必填<br>
@@ -93,46 +124,83 @@ public class Student implements Serializable {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", sex=").append(sex);
-        sb.append(", age=").append(age);
-        sb.append("]");
-        return sb.toString();
+    /**
+     * CHAR(1) 默认值[0]<br>
+     * 获得 是否有效 0-有效，1-删除 
+     */
+    public String getIsValid() {
+        return isValid;
     }
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        Student other = (Student) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getSex() == null ? other.getSex() == null : this.getSex().equals(other.getSex()))
-            && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()));
+    /**
+     * CHAR(1) 默认值[0]<br>
+     * 设置 是否有效 0-有效，1-删除 
+     */
+    public void setIsValid(String isValid) {
+        this.isValid = isValid == null ? null : isValid.trim();
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getSex() == null) ? 0 : getSex().hashCode());
-        result = prime * result + ((getAge() == null) ? 0 : getAge().hashCode());
-        return result;
+    /**
+     * VARCHAR(20)<br>
+     * 获得 创建者
+     */
+    public String getCreator() {
+        return creator;
+    }
+
+    /**
+     * VARCHAR(20)<br>
+     * 设置 创建者
+     */
+    public void setCreator(String creator) {
+        this.creator = creator == null ? null : creator.trim();
+    }
+
+    /**
+     * TIMESTAMP(19) 默认值[CURRENT_TIMESTAMP] 必填<br>
+     * 获得 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * TIMESTAMP(19) 默认值[CURRENT_TIMESTAMP] 必填<br>
+     * 设置 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * VARCHAR(20)<br>
+     * 获得 最后修改者
+     */
+    public String getUpdator() {
+        return updator;
+    }
+
+    /**
+     * VARCHAR(20)<br>
+     * 设置 最后修改者
+     */
+    public void setUpdator(String updator) {
+        this.updator = updator == null ? null : updator.trim();
+    }
+
+    /**
+     * TIMESTAMP(19)<br>
+     * 获得 最后修改时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * TIMESTAMP(19)<br>
+     * 设置 最后修改时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

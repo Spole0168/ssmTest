@@ -19,27 +19,6 @@
         </property>
 	</bean>
 	
-	<!-- ========================================配置数据源========================================= -->
-	
-<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
-<!--         <property name="driverClassName" value="${jdbc.mysql.driver}"/> -->
-<!--         <property name="url" value="${jdbc.mysql.url}"/> -->
-<!--         <property name="username" value="${jdbc.mysql.username}"/> -->
-<!--         <property name="password" value="${jdbc.mysql.password}"/> -->
-<!--         <property name="initialSize" value="${jdbc.initialSize}"/> -->
-<!--         <property name="minIdle" value="${jdbc.minIdle}"/> -->
-<!--         <property name="maxIdle" value="${jdbc.maxIdle}"/> -->
-<!--         <property name="maxActive" value="${jdbc.maxActive}"/> -->
-<!--         <property name="maxWait" value="${jdbc.maxWait}"/> -->
-<!--         <property name="defaultAutoCommit" value="${jdbc.defaultAutoCommit}"/> -->
-<!--         <property name="removeAbandoned" value="${jdbc.removeAbandoned}"/> -->
-<!--         <property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"/> -->
-<!--         <property name="testWhileIdle" value="${jdbc.testWhileIdle}"/> -->
-<!--         <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/> -->
-<!--         <property name="numTestsPerEvictionRun" value="${jdbc.numTestsPerEvictionRun}"/> -->
-<!--         <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"/> -->
-<!--     </bean> -->
-
 	<!-- 配置sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

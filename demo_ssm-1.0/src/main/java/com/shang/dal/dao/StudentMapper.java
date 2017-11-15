@@ -1,11 +1,10 @@
 package com.shang.dal.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.shang.dal.model.Student;
 import com.shang.dal.model.StudentExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
 public interface StudentMapper {
     long countByExample(StudentExample example);
 

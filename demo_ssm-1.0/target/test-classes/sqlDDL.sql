@@ -11,7 +11,7 @@ create table student (
     
     is_valid char(1) null default '0' comment '是否有效 0-有效，1-删除 ',
     creator varchar(20) comment '创建者',
-    create_time datetime comment '创建时间',
+    create_time timestamp  default current_timestamp comment '创建时间',
     updator varchar(20) comment '最后修改者',
     update_time datetime comment '最后修改时间',
 	primary key (id)    
@@ -28,7 +28,7 @@ create table t_user (
     
     is_valid char(1) null default '0' comment '是否有效 0-有效，1-删除 ',
     creator varchar(20) comment '创建者',
-    create_time datetime comment '创建时间',
+    create_time timestamp  default current_timestamp comment '创建时间',
     updator varchar(20) comment '最后修改者',
     update_time datetime comment '最后修改时间',
 	primary key (id)    
@@ -49,7 +49,7 @@ create table t_menu (
     
     is_valid char(1) null default '0' comment '是否有效 0-有效，1-删除 ',
     creator varchar(20) comment '创建者',
-    create_time datetime comment '创建时间',
+    create_time timestamp  default current_timestamp comment '创建时间',
     updator varchar(20) comment '最后修改者',
     update_time datetime comment '最后修改时间',
 	primary key (id)    
@@ -65,7 +65,7 @@ create table t_role (
     
     is_valid char(1) null default '0' comment '是否有效 0-有效，1-删除 ',
     creator varchar(20) comment '创建者',
-    create_time datetime comment '创建时间',
+    create_time timestamp  default current_timestamp comment '创建时间',
     updator varchar(20) comment '最后修改者',
     update_time datetime comment '最后修改时间',
 	primary key (id)    
@@ -81,7 +81,7 @@ create table t_role_menus (
     
     is_valid char(1) null default '0' comment '是否有效 0-有效，1-删除 ',
     creator varchar(20) comment '创建者',
-    create_time datetime comment '创建时间',
+    create_time timestamp  default current_timestamp comment '创建时间',
     updator varchar(20) comment '最后修改者',
     update_time datetime comment '最后修改时间',
 	primary key (id)    
@@ -96,7 +96,7 @@ create table t_user_roles (
     
     is_valid char(1) null default '0' comment '是否有效 0-有效，1-删除 ',
     creator varchar(20) comment '创建者',
-    create_time datetime comment '创建时间',
+    create_time timestamp  default current_timestamp comment '创建时间',
     updator varchar(20) comment '最后修改者',
     update_time datetime comment '最后修改时间',
 	primary key (id)    
