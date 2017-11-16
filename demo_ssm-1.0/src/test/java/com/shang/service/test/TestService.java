@@ -18,13 +18,24 @@ public class TestService {
 		File file = new File("D://apps//ExcelTemplate//CreditJson.txt");
 		String fstr = HelpUtils.readFileByLines(file);
 		JSONObject jsonParam = (JSONObject) JSON.parse(fstr);
+		//json --> req
+		Request req = JSONObject.toJavaObject(jsonParam,Request.class);
+		Request reqq = new Request();
+		Pos2ReqBody pos2Body = new Pos2ReqBody();
+		reqq.setBody(pos2Body);
+		System.out.println(req);
 		String creditService = "";
 		try {
 			creditService = HelpUtils.getCreditService(urlyb, jsonParam);
 		} catch (Exception e) {
 			System.err.println("ERROR------");
 		}
-		System.out.println("Test="+creditService);
+		Response ress = new Response();
+		ress = JSONObject.toJavaObject((JSONObject) JSON.parse(creditService), Response.class);
+		ress.setSrcJson(creditService);
+		System.out.println("Test="+JSON.toJSONString(ress));
+		
+		
 	}
 	@Test
 	public void test_postwo(){
@@ -53,13 +64,23 @@ public class TestService {
 		System.out.println("Test="+creditService);
 	}
 	@Test
+	public void test_JsonPs_req(){
+//		PosTwoReqBody pr = new PosTwoReqBody();
+//		pr.setIdentity("ID123213");
+//		pr.setCity("CCC");
+//		pr.setMobile("13123312312");
+//		
+//		System.out.println(JSON.toJSON(pr));
+		
+	}
+	@Test
 	public void test_Json(){
 		File file = new File("D://apps//ExcelTemplate//CreditJson.txt");
 		String fstr = HelpUtils.readFileByLines(file);
 		JSONObject jsonParam = (JSONObject) JSON.parse(fstr);
 		String creditService = "";
 		try {
-			creditService = HelpUtils.getCreditService("http://127.0.0.1:9595/demo/jsonService/test.do", jsonParam);
+			creditService = HelpUtils.getCreditService("http://127.0.0.1:9595/demo/stu/jsonTest.do", jsonParam);
 		} catch (Exception e) {
 			System.err.println("ERROR------");
 		}
