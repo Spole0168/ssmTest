@@ -20,7 +20,7 @@ public class TestDal {
 	public void before() {
 		// 使用"spring.xml"和"spring-mybatis.xml"这两个配置文件创建Spring上下文
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				new String[] { "testConfig/test_spring_mvc.xml", "testConfig/test_spring_ibatis.xml" });
+				new String[] { "testConfig/test_spring_ibatis.xml" });
 		// 从Spring容器中根据bean的id取出我们要使用的userService对象
 		studentDAO = (StudentDAO) ac.getBean("studentDAO");
 	}
