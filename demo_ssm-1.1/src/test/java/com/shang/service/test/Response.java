@@ -1,8 +1,9 @@
 package com.shang.service.test;
 
-public class Response<T> {
+public class Response {
 	private Header header;
-	private ResParentBody<T> body;
+	private ResParentBody body;
+	
 	private String srcJson;
 	
 	public Header getHeader() {
@@ -12,10 +13,10 @@ public class Response<T> {
 		this.header = header;
 	}
 	
-	public ResParentBody<T> getBody() {
+	public ResParentBody getBody() {
 		return body;
 	}
-	public void setBody(ResParentBody<T> body) {
+	public void setBody(ResParentBody body) {
 		this.body = body;
 	}
 	public String getSrcJson() {

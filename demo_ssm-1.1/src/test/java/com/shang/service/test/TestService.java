@@ -20,6 +20,9 @@ public class TestService {
 		JSONObject jsonParam = (JSONObject) JSON.parse(fstr);
 		//json --> req
 		Request req = JSONObject.toJavaObject(jsonParam,Request.class);
+		Request reqq = new Request();
+		Pos2ReqBody pos2Body = new Pos2ReqBody();
+		reqq.setBody(pos2Body);
 		System.out.println(req);
 		String creditService = "";
 		try {
@@ -27,9 +30,12 @@ public class TestService {
 		} catch (Exception e) {
 			System.err.println("ERROR------");
 		}
-		Response<Post1Res> ress = new Response<Post1Res>();
+		Response ress = new Response();
 		ress = JSONObject.toJavaObject((JSONObject) JSON.parse(creditService), Response.class);
-		System.out.println("Test="+creditService);
+		ress.setSrcJson(creditService);
+		System.out.println("Test="+JSON.toJSONString(ress));
+		
+		
 	}
 	@Test
 	public void test_postwo(){
