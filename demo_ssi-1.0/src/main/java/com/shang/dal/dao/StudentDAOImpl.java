@@ -1,6 +1,6 @@
 package com.shang.dal.dao;
 
-import com.base.BaseDao;
+import com.shang.base.BaseDao;
 import com.shang.dal.model.Student;
 import com.shang.dal.model.StudentExample;
 import java.util.List;

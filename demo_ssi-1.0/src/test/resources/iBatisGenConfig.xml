@@ -5,17 +5,17 @@
 
 <generatorConfiguration>
     <context id="OracleTables" targetRuntime="Ibatis2Java5">
-        <plugin type="com.base.pulgin.TopSerializablePlugin"></plugin>
-        <plugin type="com.base.pulgin.SqlMapUnMergePlugin"></plugin>
+        <!-- 添加 Serializable-->
+        <plugin type="com.pulgins.SerializablePlugin"></plugin>
+        <!-- sqlMap 防重复-->
+        <plugin type="com.pulgins.SqlMapPlugin"></plugin>
         
-        <!-- DAO的生成,带有分页标识 -->
-        <plugin type="com.base.pulgin.PaginationAnnotaionPlugin">
-        	<property name="extends" value="com.base.BaseDao"/>
-        	<property name="pageClass" value="com.base.Page"/>  
-        	<property name="pageClass" value="com.base.Page"/>  
+        <!-- DAO的生成-->
+        <plugin type="com.pulgins.DaoPlugin">
+        	<property name="extends" value="com.shang.base.BaseDao"/>
         </plugin>
 
-        <commentGenerator type="com.base.pulgin.DBCommentGenerator">
+        <commentGenerator type="com.pulgins.FieldCommentGenerator">
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
 

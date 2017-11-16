@@ -1,4 +1,4 @@
-package com.base;
+package com.shang.base;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

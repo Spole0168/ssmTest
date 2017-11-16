@@ -5,11 +5,11 @@
 
 <generatorConfiguration>
     <context id="Mysql" targetRuntime="MyBatis3">
-        <plugin type="com.base.pulgin.TopSerializablePlugin"></plugin>
-        <plugin type="com.base.pulgin.SqlMapUnMergePlugin"></plugin>
+        <plugin type="com.pulgins.SerializablePlugin"></plugin>
+        <plugin type="com.pulgins.SqlMapPlugin"></plugin>
         
 		<!-- 添加注释 -->
-        <commentGenerator type="com.base.pulgin.DBCommentGenerator">
+        <commentGenerator type="com.pulgins.FieldCommentGenerator">
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
@@ -45,9 +45,6 @@
         	<generatedKey column="id" sqlStatement="select UUID()" identity="false"/>
         </table>
 
-<!--         <table tableName="user_t" domainObjectName="User" >mapperName="{0}Dao" -->
-<!--         	<generatedKey column="id" sqlStatement="mysql" identity="false"/> -->
-<!--         </table> -->
         
         
     </context>

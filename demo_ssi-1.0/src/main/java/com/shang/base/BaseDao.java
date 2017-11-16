@@ -1,4 +1,4 @@
-package com.base;
+package com.shang.base;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,6 @@ public abstract class BaseDao extends SqlMapClientDaoSupport {
 	
 	@Autowired
 	protected SqlMapClient sqlMapClient;
-	
-	protected String nameSpace;
 	
 	
 }

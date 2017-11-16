@@ -1,4 +1,4 @@
-package com.base.pulgin;
+package com.pulgins;
 
 import java.io.File;
 import java.util.List;
@@ -8,9 +8,12 @@ import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.exception.ShellException;
 import org.mybatis.generator.internal.DefaultShellCallback;
-
-public class SqlMapUnMergePlugin extends PluginAdapter {
-
+/**
+ * 防止存在映射文件 再次追加的问题
+ * @author Spole
+ *
+ */
+public class SqlMapPlugin extends PluginAdapter {
 	public boolean sqlMapDocumentGenerated(Document document, IntrospectedTable introspectedTable) {
         DefaultShellCallback shellCallback = new DefaultShellCallback(true);
         File directory;
@@ -23,7 +26,7 @@ public class SqlMapUnMergePlugin extends PluginAdapter {
 //            mappingFileName = mappingFileName.substring(mappingFileName.lastIndexOf(".")+1);
             if(null!=listFiles && listFiles.length>0){
             	for(File file : listFiles){
-//            		System.out.println(mappingFileName+"||"+file.getName());
+            		System.out.println(mappingFileName+"||"+file.getName());
             		if(file.getName().contains(mappingFileName)){
             			file.delete();
             		}

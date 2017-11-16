@@ -1,4 +1,4 @@
-package com.base.pulgin;
+package com.pulgins;
 
 import java.util.List;
 import java.util.Properties;
@@ -10,14 +10,14 @@ import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.JavaVisibility;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 
-public class TopSerializablePlugin extends PluginAdapter {
+public class SerializablePlugin extends PluginAdapter {
 
 	private FullyQualifiedJavaType serializable;
     private FullyQualifiedJavaType gwtSerializable;
     private boolean addGWTInterface;
     private boolean suppressJavaInterface;
 
-    public TopSerializablePlugin() {
+    public SerializablePlugin() {
         super();
         serializable = new FullyQualifiedJavaType("java.io.Serializable"); //$NON-NLS-1$
         gwtSerializable = new FullyQualifiedJavaType("com.google.gwt.user.client.rpc.IsSerializable"); //$NON-NLS-1$

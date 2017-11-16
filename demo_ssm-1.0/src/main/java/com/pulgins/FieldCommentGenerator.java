@@ -1,4 +1,4 @@
-package com.base.pulgin;
+package com.pulgins;
 
 import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.Method;
@@ -11,7 +11,7 @@ import org.mybatis.generator.internal.DefaultCommentGenerator;
  * @author Spole
  *
  */
-public class DBCommentGenerator extends DefaultCommentGenerator {
+public class FieldCommentGenerator extends DefaultCommentGenerator {
 
 	@Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
@@ -23,24 +23,17 @@ public class DBCommentGenerator extends DefaultCommentGenerator {
 
     @Override
     public void addGetterComment(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
-        method.addJavaDocLine("/**");
-        method.addJavaDocLine(" * " + getColumnDbTypeInfo(introspectedColumn) + "<br>");
-        if (introspectedColumn.getRemarks() != null) {
-            method.addJavaDocLine(" * 获得 " + introspectedColumn.getRemarks());
-        }
-        method.addJavaDocLine(" */");
     }
 
     @Override
     public void addSetterComment(Method method, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
-        method.addJavaDocLine("/**");
-        method.addJavaDocLine(" * " + getColumnDbTypeInfo(introspectedColumn) + "<br>");
-        if (introspectedColumn.getRemarks() != null) {
-            method.addJavaDocLine(" * 设置 " + introspectedColumn.getRemarks());
-        }
-        method.addJavaDocLine(" */");
     }
-
+    
+    /**
+     * 获得数据库中字段 的属性 和 类型信息
+     * @param introspectedColumn
+     * @return
+     */
     private String getColumnDbTypeInfo(IntrospectedColumn introspectedColumn) {
         StringBuilder sb = new StringBuilder();
         sb.append(introspectedColumn.getJdbcTypeName());

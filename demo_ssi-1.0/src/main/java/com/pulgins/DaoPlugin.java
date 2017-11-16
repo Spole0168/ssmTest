@@ -1,20 +1,19 @@
-package com.base.pulgin;
+package com.pulgins;
 
 import java.util.List;
 
 import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.IntrospectedTable.TargetRuntime;
-import org.mybatis.generator.api.dom.java.Field;
+import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Interface;
-import org.mybatis.generator.api.dom.java.JavaVisibility;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.Parameter;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
-
-public class PaginationAnnotaionPlugin extends PluginAdapter {
-
+/**
+ * 设置dao层生成信息
+ * @author Spole
+ *
+ */
+public class DaoPlugin extends PluginAdapter {
 	
 	@Override
 	public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
@@ -30,7 +29,8 @@ public class PaginationAnnotaionPlugin extends PluginAdapter {
 		
 	}
 	
-	/**生成ibatis的分页dao
+	/**生成ibatis的Dao 继承BaseDao 
+	 * 加入@Repository 标签
 	 * @param interfaze
 	 * @param topLevelClass
 	 * @param introspectedTable
