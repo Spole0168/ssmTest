@@ -12,13 +12,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</script>
 	</head>
 <body>
-	<a href="<%=basePath%>stu/listStudent.do">进入用户管理页</a><br>
-	<a href="<%=basePath%>stu/showStu.do">进入Student</a><br>
-	
-	<table id="gridTable">
-	</table>
-	<div id="gridPager"></div>
-	
+	<form action="">
+		<table >
+			<tr>
+				<td>用户名：</td>  <td><input type="text" id="" name="" value="" >  </td>
+			</tr>
+			<tr>
+				<td>密码：   </td>   <td><input type="password" id="" name="" value="" >  </td>
+			</tr>
+		
+		</table>	
+		<input type="button" name="登录" >
+		<input type="button" name="忘记密码" >
+		<input type="button" name="注册" >
+	</form>
 	
 </body>
 </html>
