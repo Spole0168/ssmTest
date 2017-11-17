@@ -11,16 +11,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alibaba.fastjson.JSON;
 import com.shang.dal.dao.MenuMapper;
 import com.shang.dal.dao.StudentMapper;
-import com.shang.dal.dao.UserExtMapper;
+import com.shang.dal.dao.ext.ExtMapper;
+import com.shang.dal.dto.MenuDto;
+import com.shang.dal.dto.Node;
 import com.shang.dal.model.Menu;
 import com.shang.dal.model.Student;
-import com.shang.dal.model.User;
+import com.utils.TreeUtils;
 
 public class TestDal {
 	@Autowired
 	private StudentMapper studentMapper;
 	@Autowired
-	private UserExtMapper userExtMapper;
+	private ExtMapper extMapper;
 	@Autowired
 	private MenuMapper menuMapper;
 	
@@ -31,14 +33,13 @@ public class TestDal {
 				new String[] {"testConfig/test_spring_mybatis.xml" });
 		// 从Spring容器中根据bean的id取出我们要使用的userService对象
 		studentMapper = (StudentMapper) ac.getBean("studentMapper");
-		userExtMapper = (UserExtMapper) ac.getBean("userExtMapper");
+		extMapper = (ExtMapper) ac.getBean("extMapper");
 		menuMapper = (MenuMapper) ac.getBean("menuMapper");
 	}
 	@Test
 	public void test_add(){
 		Menu m = new Menu();
 		m.setMenuCode("A2");
-		m.setMenuPcode("A");
 		m.setMenuLevel(0);
 		m.setMenuUrl("url_A2");
 		m.setMenuName("2222");
@@ -52,9 +53,26 @@ public class TestDal {
 	}
 	@Test
 	public void test_ulist(){
-		List<User> listStudents = userExtMapper.queryUserByOrConditions(null);
+		List<MenuDto> listStudents = extMapper.queryMenusByConditions(null);
 		System.out.println(listStudents.size());
-		System.out.println(JSON.toJSON(listStudents));
+		MenuDto tree = new MenuDto();
+		tree.setMenuName("test_ROOT");
+		List<MenuDto> child = MenuDto.getChild(null, listStudents);
+		tree.setChildren(child);
+		System.out.println(JSON.toJSON(tree));
 	}
+	@Test
+	public void test_treeNodeslist(){
+		List<Menu> listStudents = menuMapper.selectByExample(null);
+		System.out.println(listStudents.size());
+		Node<Menu> tree = new Node<Menu>();
+		Menu m = new Menu();
+		m.setMenuName("test_ROOT");
+		List<Node<Menu>> child = TreeUtils.getChild(null, listStudents);
+		tree.setChildren(child);
+		tree.setT(m);
+		System.out.println(JSON.toJSON(tree));
+	}
+	
 	
 }

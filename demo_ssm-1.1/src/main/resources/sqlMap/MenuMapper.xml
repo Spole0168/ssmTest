@@ -3,11 +3,11 @@
 <mapper namespace="com.shang.dal.dao.MenuMapper">
   <resultMap id="BaseResultMap" type="com.shang.dal.model.Menu">
     <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="menu_pid" jdbcType="VARCHAR" property="menuPid" />
     <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
     <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
     <result column="menu_type" jdbcType="VARCHAR" property="menuType" />
     <result column="menu_level" jdbcType="INTEGER" property="menuLevel" />
-    <result column="menu_pcode" jdbcType="VARCHAR" property="menuPcode" />
     <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
     <result column="menu_order" jdbcType="VARCHAR" property="menuOrder" />
     <result column="is_valid" jdbcType="CHAR" property="isValid" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, menu_name, menu_code, menu_type, menu_level, menu_pcode, menu_url, menu_order, 
+    id, menu_pid, menu_name, menu_code, menu_type, menu_level, menu_url, menu_order, 
     is_valid, creator, create_time, updator, update_time
   </sql>
   <select id="selectByExample" parameterType="com.shang.dal.model.MenuExample" resultMap="BaseResultMap">
@@ -112,13 +112,13 @@
     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
       select UUID()
     </selectKey>
-    insert into t_menu (id, menu_name, menu_code, 
-      menu_type, menu_level, menu_pcode, 
+    insert into t_menu (id, menu_pid, menu_name, 
+      menu_code, menu_type, menu_level, 
       menu_url, menu_order, is_valid, 
       creator, create_time, updator, 
       update_time)
-    values (#{id,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, 
-      #{menuType,jdbcType=VARCHAR}, #{menuLevel,jdbcType=INTEGER}, #{menuPcode,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{menuPid,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{menuCode,jdbcType=VARCHAR}, #{menuType,jdbcType=VARCHAR}, #{menuLevel,jdbcType=INTEGER}, 
       #{menuUrl,jdbcType=VARCHAR}, #{menuOrder,jdbcType=VARCHAR}, #{isValid,jdbcType=CHAR}, 
       #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP})
@@ -130,6 +130,9 @@
     insert into t_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
       id,
+      <if test="menuPid != null">
+        menu_pid,
+      </if>
       <if test="menuName != null">
         menu_name,
       </if>
@@ -141,9 +144,6 @@
       </if>
       <if test="menuLevel != null">
         menu_level,
-      </if>
-      <if test="menuPcode != null">
-        menu_pcode,
       </if>
       <if test="menuUrl != null">
         menu_url,
@@ -169,6 +169,9 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       #{id,jdbcType=VARCHAR},
+      <if test="menuPid != null">
+        #{menuPid,jdbcType=VARCHAR},
+      </if>
       <if test="menuName != null">
         #{menuName,jdbcType=VARCHAR},
       </if>
@@ -180,9 +183,6 @@
       </if>
       <if test="menuLevel != null">
         #{menuLevel,jdbcType=INTEGER},
-      </if>
-      <if test="menuPcode != null">
-        #{menuPcode,jdbcType=VARCHAR},
       </if>
       <if test="menuUrl != null">
         #{menuUrl,jdbcType=VARCHAR},
@@ -219,6 +219,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
+      <if test="record.menuPid != null">
+        menu_pid = #{record.menuPid,jdbcType=VARCHAR},
+      </if>
       <if test="record.menuName != null">
         menu_name = #{record.menuName,jdbcType=VARCHAR},
       </if>
@@ -230,9 +233,6 @@
       </if>
       <if test="record.menuLevel != null">
         menu_level = #{record.menuLevel,jdbcType=INTEGER},
-      </if>
-      <if test="record.menuPcode != null">
-        menu_pcode = #{record.menuPcode,jdbcType=VARCHAR},
       </if>
       <if test="record.menuUrl != null">
         menu_url = #{record.menuUrl,jdbcType=VARCHAR},
@@ -263,11 +263,11 @@
   <update id="updateByExample" parameterType="map">
     update t_menu
     set id = #{record.id,jdbcType=VARCHAR},
+      menu_pid = #{record.menuPid,jdbcType=VARCHAR},
       menu_name = #{record.menuName,jdbcType=VARCHAR},
       menu_code = #{record.menuCode,jdbcType=VARCHAR},
       menu_type = #{record.menuType,jdbcType=VARCHAR},
       menu_level = #{record.menuLevel,jdbcType=INTEGER},
-      menu_pcode = #{record.menuPcode,jdbcType=VARCHAR},
       menu_url = #{record.menuUrl,jdbcType=VARCHAR},
       menu_order = #{record.menuOrder,jdbcType=VARCHAR},
       is_valid = #{record.isValid,jdbcType=CHAR},
@@ -282,6 +282,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.shang.dal.model.Menu">
     update t_menu
     <set>
+      <if test="menuPid != null">
+        menu_pid = #{menuPid,jdbcType=VARCHAR},
+      </if>
       <if test="menuName != null">
         menu_name = #{menuName,jdbcType=VARCHAR},
       </if>
@@ -293,9 +296,6 @@
       </if>
       <if test="menuLevel != null">
         menu_level = #{menuLevel,jdbcType=INTEGER},
-      </if>
-      <if test="menuPcode != null">
-        menu_pcode = #{menuPcode,jdbcType=VARCHAR},
       </if>
       <if test="menuUrl != null">
         menu_url = #{menuUrl,jdbcType=VARCHAR},
@@ -323,11 +323,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shang.dal.model.Menu">
     update t_menu
-    set menu_name = #{menuName,jdbcType=VARCHAR},
+    set menu_pid = #{menuPid,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
       menu_code = #{menuCode,jdbcType=VARCHAR},
       menu_type = #{menuType,jdbcType=VARCHAR},
       menu_level = #{menuLevel,jdbcType=INTEGER},
-      menu_pcode = #{menuPcode,jdbcType=VARCHAR},
       menu_url = #{menuUrl,jdbcType=VARCHAR},
       menu_order = #{menuOrder,jdbcType=VARCHAR},
       is_valid = #{isValid,jdbcType=CHAR},

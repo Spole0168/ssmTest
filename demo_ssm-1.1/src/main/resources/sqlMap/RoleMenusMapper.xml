@@ -3,8 +3,8 @@
 <mapper namespace="com.shang.dal.dao.RoleMenusMapper">
   <resultMap id="BaseResultMap" type="com.shang.dal.model.RoleMenus">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
-    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="menu_id" jdbcType="VARCHAR" property="menuId" />
     <result column="is_valid" jdbcType="CHAR" property="isValid" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, role_code, menu_code, is_valid, creator, create_time, updator, update_time
+    id, role_id, menu_id, is_valid, creator, create_time, updator, update_time
   </sql>
   <select id="selectByExample" parameterType="com.shang.dal.model.RoleMenusExample" resultMap="BaseResultMap">
     select
@@ -106,10 +106,10 @@
     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
       select UUID()
     </selectKey>
-    insert into t_role_menus (id, role_code, menu_code, 
+    insert into t_role_menus (id, role_id, menu_id, 
       is_valid, creator, create_time, 
       updator, update_time)
-    values (#{id,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, 
       #{isValid,jdbcType=CHAR}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -120,11 +120,11 @@
     insert into t_role_menus
     <trim prefix="(" suffix=")" suffixOverrides=",">
       id,
-      <if test="roleCode != null">
-        role_code,
+      <if test="roleId != null">
+        role_id,
       </if>
-      <if test="menuCode != null">
-        menu_code,
+      <if test="menuId != null">
+        menu_id,
       </if>
       <if test="isValid != null">
         is_valid,
@@ -144,11 +144,11 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       #{id,jdbcType=VARCHAR},
-      <if test="roleCode != null">
-        #{roleCode,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
       </if>
-      <if test="menuCode != null">
-        #{menuCode,jdbcType=VARCHAR},
+      <if test="menuId != null">
+        #{menuId,jdbcType=VARCHAR},
       </if>
       <if test="isValid != null">
         #{isValid,jdbcType=CHAR},
@@ -179,11 +179,11 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.roleCode != null">
-        role_code = #{record.roleCode,jdbcType=VARCHAR},
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuCode != null">
-        menu_code = #{record.menuCode,jdbcType=VARCHAR},
+      <if test="record.menuId != null">
+        menu_id = #{record.menuId,jdbcType=VARCHAR},
       </if>
       <if test="record.isValid != null">
         is_valid = #{record.isValid,jdbcType=CHAR},
@@ -208,8 +208,8 @@
   <update id="updateByExample" parameterType="map">
     update t_role_menus
     set id = #{record.id,jdbcType=VARCHAR},
-      role_code = #{record.roleCode,jdbcType=VARCHAR},
-      menu_code = #{record.menuCode,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=VARCHAR},
+      menu_id = #{record.menuId,jdbcType=VARCHAR},
       is_valid = #{record.isValid,jdbcType=CHAR},
       creator = #{record.creator,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -222,11 +222,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.shang.dal.model.RoleMenus">
     update t_role_menus
     <set>
-      <if test="roleCode != null">
-        role_code = #{roleCode,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
       </if>
-      <if test="menuCode != null">
-        menu_code = #{menuCode,jdbcType=VARCHAR},
+      <if test="menuId != null">
+        menu_id = #{menuId,jdbcType=VARCHAR},
       </if>
       <if test="isValid != null">
         is_valid = #{isValid,jdbcType=CHAR},
@@ -248,8 +248,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shang.dal.model.RoleMenus">
     update t_role_menus
-    set role_code = #{roleCode,jdbcType=VARCHAR},
-      menu_code = #{menuCode,jdbcType=VARCHAR},
+    set role_id = #{roleId,jdbcType=VARCHAR},
+      menu_id = #{menuId,jdbcType=VARCHAR},
       is_valid = #{isValid,jdbcType=CHAR},
       creator = #{creator,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},

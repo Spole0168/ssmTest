@@ -13,7 +13,7 @@ public class User implements Serializable {
     private String id;
 
     /**
-     * VARCHAR(20)<br>
+     * VARCHAR(50)<br>
      * 用户登录名 唯一性
      */
     private String username;
@@ -37,7 +37,7 @@ public class User implements Serializable {
     private String email;
 
     /**
-     * VARCHAR(20)<br>
+     * VARCHAR(50)<br>
      * 用户名
      */
     private String name;

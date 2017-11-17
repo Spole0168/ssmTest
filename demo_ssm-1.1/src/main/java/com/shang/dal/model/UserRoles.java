@@ -19,10 +19,10 @@ public class UserRoles implements Serializable {
     private String username;
 
     /**
-     * VARCHAR(20)<br>
-     * 角色编码
+     * VARCHAR(40)<br>
+     * 角色id
      */
-    private String roleCode;
+    private String roleId;
 
     /**
      * CHAR(1) 默认值[0]<br>
@@ -70,12 +70,12 @@ public class UserRoles implements Serializable {
         this.username = username == null ? null : username.trim();
     }
 
-    public String getRoleCode() {
-        return roleCode;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode == null ? null : roleCode.trim();
+    public void setRoleId(String roleId) {
+        this.roleId = roleId == null ? null : roleId.trim();
     }
 
     public String getIsValid() {

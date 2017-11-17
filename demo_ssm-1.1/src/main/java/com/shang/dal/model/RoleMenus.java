@@ -13,16 +13,16 @@ public class RoleMenus implements Serializable {
     private String id;
 
     /**
-     * VARCHAR(20)<br>
-     * 角色编码
+     * VARCHAR(40)<br>
+     * 角色id
      */
-    private String roleCode;
+    private String roleId;
 
     /**
-     * VARCHAR(20)<br>
+     * VARCHAR(40)<br>
      * 菜单编码
      */
-    private String menuCode;
+    private String menuId;
 
     /**
      * CHAR(1) 默认值[0]<br>
@@ -62,20 +62,20 @@ public class RoleMenus implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getRoleCode() {
-        return roleCode;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode == null ? null : roleCode.trim();
+    public void setRoleId(String roleId) {
+        this.roleId = roleId == null ? null : roleId.trim();
     }
 
-    public String getMenuCode() {
-        return menuCode;
+    public String getMenuId() {
+        return menuId;
     }
 
-    public void setMenuCode(String menuCode) {
-        this.menuCode = menuCode == null ? null : menuCode.trim();
+    public void setMenuId(String menuId) {
+        this.menuId = menuId == null ? null : menuId.trim();
     }
 
     public String getIsValid() {

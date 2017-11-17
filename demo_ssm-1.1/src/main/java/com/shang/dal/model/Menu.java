@@ -13,6 +13,12 @@ public class Menu implements Serializable {
     private String id;
 
     /**
+     * VARCHAR(40)<br>
+     * 父级菜单id
+     */
+    private String menuPid;
+
+    /**
      * VARCHAR(60)<br>
      * 菜单名称
      */
@@ -35,12 +41,6 @@ public class Menu implements Serializable {
      * 菜单级别 1-一级菜单 2-二级菜单 3-三级菜单
      */
     private Integer menuLevel;
-
-    /**
-     * VARCHAR(20)<br>
-     * 菜单父级编码
-     */
-    private String menuPcode;
 
     /**
      * VARCHAR(50)<br>
@@ -92,6 +92,14 @@ public class Menu implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
+    public String getMenuPid() {
+        return menuPid;
+    }
+
+    public void setMenuPid(String menuPid) {
+        this.menuPid = menuPid == null ? null : menuPid.trim();
+    }
+
     public String getMenuName() {
         return menuName;
     }
@@ -122,14 +130,6 @@ public class Menu implements Serializable {
 
     public void setMenuLevel(Integer menuLevel) {
         this.menuLevel = menuLevel;
-    }
-
-    public String getMenuPcode() {
-        return menuPcode;
-    }
-
-    public void setMenuPcode(String menuPcode) {
-        this.menuPcode = menuPcode == null ? null : menuPcode.trim();
     }
 
     public String getMenuUrl() {

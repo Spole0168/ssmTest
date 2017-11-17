@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.shang.dal.model.UserRoles">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
     <result column="is_valid" jdbcType="CHAR" property="isValid" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, role_code, is_valid, creator, create_time, updator, update_time
+    id, username, role_id, is_valid, creator, create_time, updator, update_time
   </sql>
   <select id="selectByExample" parameterType="com.shang.dal.model.UserRolesExample" resultMap="BaseResultMap">
     select
@@ -106,10 +106,10 @@
     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
       select UUID()
     </selectKey>
-    insert into t_user_roles (id, username, role_code, 
+    insert into t_user_roles (id, username, role_id, 
       is_valid, creator, create_time, 
       updator, update_time)
-    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
       #{isValid,jdbcType=CHAR}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -123,8 +123,8 @@
       <if test="username != null">
         username,
       </if>
-      <if test="roleCode != null">
-        role_code,
+      <if test="roleId != null">
+        role_id,
       </if>
       <if test="isValid != null">
         is_valid,
@@ -147,8 +147,8 @@
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="roleCode != null">
-        #{roleCode,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="isValid != null">
         #{isValid,jdbcType=CHAR},
@@ -182,8 +182,8 @@
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.roleCode != null">
-        role_code = #{record.roleCode,jdbcType=VARCHAR},
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
       <if test="record.isValid != null">
         is_valid = #{record.isValid,jdbcType=CHAR},
@@ -209,7 +209,7 @@
     update t_user_roles
     set id = #{record.id,jdbcType=VARCHAR},
       username = #{record.username,jdbcType=VARCHAR},
-      role_code = #{record.roleCode,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=VARCHAR},
       is_valid = #{record.isValid,jdbcType=CHAR},
       creator = #{record.creator,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -225,8 +225,8 @@
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="roleCode != null">
-        role_code = #{roleCode,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
       </if>
       <if test="isValid != null">
         is_valid = #{isValid,jdbcType=CHAR},
@@ -249,7 +249,7 @@
   <update id="updateByPrimaryKey" parameterType="com.shang.dal.model.UserRoles">
     update t_user_roles
     set username = #{username,jdbcType=VARCHAR},
-      role_code = #{roleCode,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=VARCHAR},
       is_valid = #{isValid,jdbcType=CHAR},
       creator = #{creator,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
